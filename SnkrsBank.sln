@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnkrsBank.Services", "Snkrs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnkrsBank.Services.Messaging", "SnkrsBank.Services.Messaging\SnkrsBank.Services.Messaging.csproj", "{8A7AF725-1D35-461F-93C1-D7891A0B6ED8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnkrsBank.Web", "SnkrsBank.Web\SnkrsBank.Web.csproj", "{4D5C2927-FB07-42C0-908C-6F5734C0B20B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{8A7AF725-1D35-461F-93C1-D7891A0B6ED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A7AF725-1D35-461F-93C1-D7891A0B6ED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A7AF725-1D35-461F-93C1-D7891A0B6ED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D5C2927-FB07-42C0-908C-6F5734C0B20B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D5C2927-FB07-42C0-908C-6F5734C0B20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D5C2927-FB07-42C0-908C-6F5734C0B20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D5C2927-FB07-42C0-908C-6F5734C0B20B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{9DD30A8C-5257-41A7-95CE-55B52F9B6042} = {28604714-2C31-4545-A432-A8D3990D7C27}
 		{CF143A54-DB75-434B-B01D-96FD90E05AB9} = {CB2457CA-E982-452F-AB2E-E0AF49E5771A}
 		{8A7AF725-1D35-461F-93C1-D7891A0B6ED8} = {CB2457CA-E982-452F-AB2E-E0AF49E5771A}
+		{4D5C2927-FB07-42C0-908C-6F5734C0B20B} = {A52CE374-49AC-4F20-A72E-A0EAE9C1179B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {63A3311B-1B3E-4079-B13D-62E24E47D5FA}
