@@ -25,6 +25,7 @@ namespace SnkrsBank.Web.App_Start
                     cfg.CreateMap<Setting, SettingViewModel>().ReverseMap();
                     cfg.CreateMap<Setting, SettingsListViewModel>().ReverseMap();
                     cfg.CreateMap<SalePost, PostVM>().ReverseMap();
+                    cfg.CreateMap<SalePost, PostFilterVM>().ReverseMap();
 
 
                 });
