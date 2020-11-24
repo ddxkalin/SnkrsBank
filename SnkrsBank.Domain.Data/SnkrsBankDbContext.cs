@@ -38,7 +38,7 @@
 
         public DbSet<SalePost> Posts { get; set; }
 
-        public DbSet<Category> MovieCategories { get; set; }
+        public DbSet<Category> SneakerCategories { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
