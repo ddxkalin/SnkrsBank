@@ -3,9 +3,50 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{28604714-2C31-4545-A432-A8D3990D7C27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CB2457CA-E982-452F-AB2E-E0AF49E5771A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{A52CE374-49AC-4F20-A72E-A0EAE9C1179B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnkrsBank.Domain.Data", "SnkrsBank.Domain.Data\SnkrsBank.Domain.Data.csproj", "{F2A176AC-47FC-499B-8C8F-290A10C439C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnkrsBank.Domain.Common", "SnkrsBank.Domain.Common\SnkrsBank.Domain.Common.csproj", "{47B1E832-9E9E-499C-A806-855C4A9850B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnkrsBank.Common", "SnkrsBank.Common\SnkrsBank.Common.csproj", "{5CAC001E-3CAB-4019-BC0F-6AFD30484505}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnkrsBank.Domain.Models", "SnkrsBank.Domain.Models\SnkrsBank.Domain.Models.csproj", "{9DD30A8C-5257-41A7-95CE-55B52F9B6042}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2A176AC-47FC-499B-8C8F-290A10C439C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2A176AC-47FC-499B-8C8F-290A10C439C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2A176AC-47FC-499B-8C8F-290A10C439C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A176AC-47FC-499B-8C8F-290A10C439C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B1E832-9E9E-499C-A806-855C4A9850B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B1E832-9E9E-499C-A806-855C4A9850B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B1E832-9E9E-499C-A806-855C4A9850B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B1E832-9E9E-499C-A806-855C4A9850B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CAC001E-3CAB-4019-BC0F-6AFD30484505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CAC001E-3CAB-4019-BC0F-6AFD30484505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CAC001E-3CAB-4019-BC0F-6AFD30484505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CAC001E-3CAB-4019-BC0F-6AFD30484505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DD30A8C-5257-41A7-95CE-55B52F9B6042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DD30A8C-5257-41A7-95CE-55B52F9B6042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DD30A8C-5257-41A7-95CE-55B52F9B6042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DD30A8C-5257-41A7-95CE-55B52F9B6042}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F2A176AC-47FC-499B-8C8F-290A10C439C7} = {28604714-2C31-4545-A432-A8D3990D7C27}
+		{47B1E832-9E9E-499C-A806-855C4A9850B5} = {28604714-2C31-4545-A432-A8D3990D7C27}
+		{9DD30A8C-5257-41A7-95CE-55B52F9B6042} = {28604714-2C31-4545-A432-A8D3990D7C27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {63A3311B-1B3E-4079-B13D-62E24E47D5FA}
