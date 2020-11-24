@@ -302,3 +302,4 @@ $RECYCLE.BIN/
 *.lnk
 /ManagementControls.Web/ConnectionStrings.config
 /ManagementControls.Web2/ConnectionStrings.config
+.vs/SnkrsBank/v16/.suo
