@@ -1,6 +1,6 @@
 ﻿namespace SnkrsBank.Web.App_Start
 {
-    public interface IMapFrom
+    public interface IMapFrom<T>
     {
     }
 }
