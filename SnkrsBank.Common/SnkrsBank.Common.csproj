@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SnkrsBank.Domain.Models\SnkrsBank.Domain.Models.csproj" />
+  </ItemGroup>
+
 </Project>

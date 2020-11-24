@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using SnkrsBank.Common;
-using SnkrsBank.Domain.Models;
-using System;
-using System.Linq;
-
-namespace SnkrsBank.Domain.Data.Seeding
+﻿namespace SnkrsBank.Domain.Data.Seeding
 {
-    public static class ApplicationDbContextSeeder
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.Extensions.DependencyInjection;
+    using SnkrsBank.Common;
+    using SnkrsBank.Domain.Models;
+    using System;
+    using System.Linq;
+
+    public static class SnkrsBankDbContextSeeder
     {
         public static void Seed(SnkrsBankDbContext dbContext, IServiceProvider serviceProvider)
         {
