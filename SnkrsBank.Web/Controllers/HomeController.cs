@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using SnkrsBank.Web.Models;
-
-namespace SnkrsBank.Web.Controllers
+﻿namespace SnkrsBank.Web.Controllers
 {
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using Newtonsoft.Json;
+    using RestSharp;
+    using SnkrsBank.Web.Models;
+    using SnkrsBank.Web.ViewModels;
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -20,12 +20,30 @@ namespace SnkrsBank.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
+            var client = new RestClient("https://api.predicthq.com/v1/events/");
+            client.AddDefaultHeader("Authorization", "Bearer ZN79Mw9lMMWGgNMDSA3NwO5MpoczZI");
+            client.AddDefaultHeader("Accept", "application/json");
+            var restRequest = new RestRequest();
+            restRequest.AddQueryParameter("category", "events");
+            restRequest.AddQueryParameter("label", "movie");
+            restRequest.AddQueryParameter("q", "film");
+            restRequest.AddQueryParameter("offset", "4");
+            var response = client.Get(restRequest);
+            var sneakerEvenetList = new List<SneakerEvent>();
 
-        public IActionResult Privacy()
-        {
-            return View();
+            try
+            {
+                if (response.IsSuccessful)
+                {
+                    var results = JsonConvert.DeserializeObject<SneakerEventResult>(response.Content);
+                    sneakerEvenetList = results.Results;
+                }
+            }
+            catch
+            {
+            }
+
+            return this.View(sneakerEvenetList);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
