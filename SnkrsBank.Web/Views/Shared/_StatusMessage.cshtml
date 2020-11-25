@@ -1,0 +1,12 @@
+﻿@model SnkrsBank.Web.ViewModels.AlertVM
+
+@if (Model != null)
+{
+    var statusMessageClass = Model.Success ? "success" : "danger";
+    <div class="alert alert-@statusMessageClass alert-alt alert-dismissible mb alert-validaiton fade show-on-load dismiss" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+        <div class="alert-body">
+            @Model.Message
+        </div>
+    </div>
+}

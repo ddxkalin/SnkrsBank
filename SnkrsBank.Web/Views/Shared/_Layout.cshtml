@@ -1,48 +1,147 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SnkrsBank.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <title>@this.ViewData["Title"] - Sneakers Bank</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/theme/components/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/theme/components/elegant-font/style.css" />
+        <link rel="stylesheet" href="~/theme/owl-carousel.css" />
+        <link rel="stylesheet" href="~/theme/jquery.mCustomScrollbar.css" />
+        <link rel="stylesheet" href="~/theme/theme-waves.css" />
+        <link rel="stylesheet" href="~/theme/theme.css" title="theme-default" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/theme/components/font-awesome/css/font-awesome.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/theme/components/elegant-font/style.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/theme/owl-carousel.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/theme/jquery.mCustomScrollbar.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/theme/theme-waves.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/theme/theme.min.css" title="theme-default" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    @this.RenderSection("Styles", required: false)
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SnkrsBank.Web</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+<body class="main-body">
+    <nav class="navbar navbar-theme navbar-fixed-top">
+        <div class="container-fluid">
+
+            <!-- Navbar Header -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/img/md_logo_white.png" alt="SnkrsBank" />
+                </a>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+            <!-- /Navbar Header -->
+            <!-- Navbar Content -->
+            <div class="collapse navbar-collapse" id="main-navbar">
+
+                <!-- Navigation -->
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-action="Create" asp-controller="Posts">Add Listing</a></li>
+                    <li><a asp-area="" asp-action="Index" asp-controller="Posts" asp-route-page="1" asp-route-pageSize="20">View All Listings</a></li>
+                    <li><a href="#">Sneaker Events</a></li>
+                </ul>
+                <!-- /Navigation -->
+                <!-- Navigation Right -->
+                @await this.Html.PartialAsync("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a asp-action="Wishlisted" asp-controller="Posts" asp-area="" asp-route-page="1" asp-route-pageSize="20"><i class="icon fa fa-heart-o"></i> </a>
+                    </li>
+                </ul>
+                <!-- /Navigation Right -->
+                <!-- Search Form -->
+                <form id="searchForm" class="navbar-form navbar-form-toggleable navbar-right" method="get" asp-action="Index" asp-controller="Posts">
+                    <div class="navbar-form-toggle-content">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search" name="sneakerName">
+                            <input hidden name="page" value="1" />
+                            <input hidden name="pageSize" value="20" />
+                        </div>
+                    </div>
+                    <button class="btn btn-primary-dark btn-waves btn-icon navbar-form-toggle waves-effect waves-light"><i class="icon fa fa-search"></i> </button>
+                </form>
+                <!-- /Search Form -->
+
+            </div>
+            <!-- /Navbar Content -->
+
+        </div>
+    </nav>
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container body-content">
+        @this.RenderBody()
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - SnkrsBank.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer">
+        <div class="footer-bottom-line bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="links">
+                            <a href="#">About us</a> /
+                            <a href="#">Terms and conditions</a> /
+                            <a href="#">Privacy policy</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="links">
+                            <a href="#"><i class="icon fa fa-facebook"></i></a>
+                            <a href="#"><i class="icon fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <p class="copyright no-margin">
+                            &copy; 2020 - SneakersBank
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/theme/theme.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous">
+        </script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous">
+        </script>
+        <script src="~/theme/theme.min.js"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    <script>
+        $(document).ready(function () {
+            $('#searchForm').on('keypress', function (e) {
+                if (e.keyCode == 13) {
+                    $(this).submit();
+                }
+            });
+        });
+    </script>
+
+    @this.RenderSection("Scripts", required: false)
 </body>
 </html>

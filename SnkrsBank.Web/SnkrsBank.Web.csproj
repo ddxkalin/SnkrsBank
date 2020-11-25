@@ -7,8 +7,8 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.10" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="RestSharp" Version="106.11.7" />
   </ItemGroup>
@@ -19,6 +19,10 @@
     <ProjectReference Include="..\SnkrsBank.Domain.Models\SnkrsBank.Domain.Models.csproj" />
     <ProjectReference Include="..\SnkrsBank.Services.Messaging\SnkrsBank.Services.Messaging.csproj" />
     <ProjectReference Include="..\SnkrsBank.Services\SnkrsBank.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Settings\" />
   </ItemGroup>
 
 </Project>
