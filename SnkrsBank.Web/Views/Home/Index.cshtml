@@ -1,8 +1,42 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model ICollection<SnkrsBank.Web.ViewModels.SneakerEvent>
+@{
+    this.ViewData["Title"] = "Home";
 }
+@section Styles
+    {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/item.min.css" asp-append-version="true" />
+}
+<div class="page-intro">
+    <h2>Upcoming sneaker events</h2>
+</div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row mb-2x">
+    <div class="col-xs-12">
+        <div class="events ui divided items">
+            @{
+                var i = 1;
+            }
+            @foreach (var exhibition in Model)
+            {
+                i++;
+                <div class="item">
+                    <div class="image">
+                        <img src="https://source.unsplash.com/random/180x180?sig=@i&film,festival">
+                    </div>
+                    <div class="content">
+                        <a class="header">@exhibition.Title</a>
+                        <div class="meta">
+                            <span>Description:</span>
+                        </div>
+                        <div class="description">
+                            @{
+                                var substring = exhibition.Description.Substring(0, Math.Min(450, exhibition.Description.Length));
+                            }
+                            <p>@substring @(exhibition.Description.Length > 450 ? " ..." : " ")</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
