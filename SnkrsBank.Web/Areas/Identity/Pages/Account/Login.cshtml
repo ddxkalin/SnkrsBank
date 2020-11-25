@@ -1,0 +1,70 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Sign in";
+}
+
+<div class="alert alert-alt alert-danger mb alert-small alert-dismissable alert-validation fade in" role="alert" asp-validation-summary="All">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="panel panel-white panel-small">
+    <div class="panel-body pt-2x pb">
+
+        <h2>@ViewData["Title"]</h2>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <form method="post" class="form-custom" asp-route-returnUrl="@Model.ReturnUrl">
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="md-input">
+                                <label asp-for="Input.Email" class="md-input-placeholder"></label>
+                                <input type="text" asp-for="Input.Email" class="md-input-control">
+                            </div>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="md-input">
+                                <label asp-for="Input.Password" class="md-input-placeholder"></label>
+                                <input type="password" asp-for="Input.Password" class="md-input-control">
+                            </div>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt">
+                        <div class="col-xs-12">
+                            <div class="md-checkbox md-checkbox-primary pull-left">
+                                <input asp-for="Input.RememberMe" />
+                                <label asp-for="Input.RememberMe">@Html.DisplayNameFor(m => m.Input.RememberMe)</label>
+                            </div>
+                            <a asp-page="./ForgotPassword" class="pull-right">Forgot your password?</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt">
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn btn-primary">Sign in</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-2x">
+                        <div class="col-xs-12">
+                            Don't have an account? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
