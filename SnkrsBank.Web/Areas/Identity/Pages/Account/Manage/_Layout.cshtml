@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage your account</h2>
+
+<partial name="_ManageNav" />
+
+<div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-white">
+                <div class="panel-body">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

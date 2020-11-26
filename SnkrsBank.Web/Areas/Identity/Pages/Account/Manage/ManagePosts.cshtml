@@ -1,0 +1,50 @@
+﻿@page
+@model ManagePostsModel
+@{
+    ViewData["Title"] = "My posts";
+    var ConfirmationModalModel = new SnkrsBank.Web.Areas.Admin.Models.ModalVM
+    {
+        ModalId = "delete-entity-modal",
+        ModalTitle = "Delete post",
+        ModalMessage = "Are you sure you want to permanently delete the selected post?",
+        SubmitButtonText = "Delete post",
+    };
+}
+
+<partial name="_StatusMessage" model="this.Model.StatusMessage" />
+<partial name="_ConfirmationModal" model="ConfirmationModalModel" />
+
+<div class="table-responsive">
+    <table class="table table-hover no-mb">
+        <thead>
+            <tr>
+                <th>Post name</th>
+                <th>Movie name</th>
+                <th>Movie slug</th>
+                <th>Created on</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var post in Model.Output)
+            {
+                <tr>
+                    <td>@post.Name</td>
+                    <td>@post.Sneaker.Name</td>
+                    <td>@post.Sneaker.Slug</td>
+                    <td>@post.CreatedOn.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>
+                        <form method="post" asp-page-handler="DeletePost" id="deletePostForm-@post.Id">
+                            <input type="hidden" value="@post.Id" name="postId" />
+                            <a href="#" data-toggle="modal" data-target="#@ConfirmationModalModel.ModalId" data-form="#deletePostForm-@post.Id"><i class="fa fa-trash-o"></i></a>
+                        </form>
+                    </td>
+                    <td><a asp-area="" asp-controller="Posts" asp-action="Post" asp-route-id="@post.Sneaker.Id">To movie</a></td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
