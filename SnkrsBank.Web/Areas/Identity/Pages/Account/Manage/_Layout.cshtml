@@ -1,19 +1,25 @@
 ﻿@{
-    Layout = "/Views/Shared/_Layout.cshtml";
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
+    {
+        Layout = (string)parentLayout;
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
 }
 
 <h2>Manage your account</h2>
 
-<partial name="_ManageNav" />
-
 <div>
+    <h4>Change your account settings</h4>
+    <hr />
     <div class="row">
-        <div class="col-xs-12">
-            <div class="panel panel-white">
-                <div class="panel-body">
-                    @RenderBody()
-                </div>
-            </div>
+        <div class="col-md-3">
+            <partial name="_ManageNav" />
+        </div>
+        <div class="col-md-9">
+            @RenderBody()
         </div>
     </div>
 </div>
