@@ -41,28 +41,29 @@ namespace SnkrsBank.Web
                 {
                     options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"));
                 });
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddControllersWithViews(); services
-                 .AddIdentity<User, UserRole>(options =>
-                 {
-                     options.Password.RequireDigit = false;
-                     options.Password.RequireLowercase = false;
-                     options.Password.RequireUppercase = false;
-                     options.Password.RequireNonAlphanumeric = false;
-                     options.Password.RequiredLength = 8;
-                     options.SignIn.RequireConfirmedEmail = true;
-                     options.User.RequireUniqueEmail = true;
-                     options.Lockout.MaxFailedAccessAttempts = 5;
-                     options.Lockout.DefaultLockoutTimeSpan = System.TimeSpan.FromMinutes(30);
-                 })
-                 .AddEntityFrameworkStores<SnkrsBankDbContext>()
-                 .AddUserStore<ApplicationUserStore>()
-                 .AddRoleStore<ApplicationRoleStore>()
-                 .AddUserManager<ApplicationUserManager<User>>()
-                 .AddSignInManager<ApplicationSignInManager<User>>()
-                 .AddDefaultTokenProviders();
+            //services.AddControllersWithViews();
+            services.AddIdentity<User, UserRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 8;
+                options.SignIn.RequireConfirmedEmail = true;
+                options.User.RequireUniqueEmail = true;
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.DefaultLockoutTimeSpan = System.TimeSpan.FromMinutes(30);
+            })
+                .AddEntityFrameworkStores<SnkrsBankDbContext>()
+                .AddUserStore<ApplicationUserStore>()
+                .AddRoleStore<ApplicationRoleStore>()
+                .AddUserManager<ApplicationUserManager<User>>()
+                .AddSignInManager<ApplicationSignInManager<User>>()
+                .AddDefaultTokenProviders();
 
             services
                 .AddMvc()
@@ -145,11 +146,9 @@ namespace SnkrsBank.Web
             app.UseRouting();
 
             app.UseStaticFiles();
-
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -157,6 +156,7 @@ namespace SnkrsBank.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
